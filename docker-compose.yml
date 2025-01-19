@@ -3,36 +3,43 @@ version: '3.8'
 services:
   frontend:
     build:
-      context: ./frontend
+      context: ./task-frontend
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
     depends_on:
       - backend
+    networks:
+      - task-network
 
   backend:
     build:
-      context: ./backend
+      context: ./task-backend
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://database:3306/mydb
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=root
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/taskdb
+      - SPRING_DATASOURCE_USERNAME=mayhrem
+      - SPRING_DATASOURCE_PASSWORD=task-1920892
     depends_on:
       - database
+    networks:
+      - task-network
 
   database:
-    image: mysql:5.7
+    image: postgres:13
     ports:
-      - "3306:3306"
+      - "5432:5432"
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=mydb
+      - POSTGRES_USER=mayhrem
+      - POSTGRES_PASSWORD=task-1920892
+      - POSTGRES_DB=taskdb
     volumes:
       - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - task-network
 
 networks:
-  default:
+  task-network:
     driver: bridge
