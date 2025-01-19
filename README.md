@@ -6,7 +6,7 @@ This project is a full-stack CRUD application that demonstrates end-to-end devel
 
 ```
 devops-crud-app
-├── frontend                # Frontend application built with React
+├── task-frontend                # Frontend application built with React
 │   ├── src
 │   │   ├── components      # React components for UI
 │   │   ├── services        # Service files for API calls
@@ -15,7 +15,7 @@ devops-crud-app
 │   ├── package.json        # Frontend dependencies and scripts
 │   ├── tsconfig.json       # TypeScript configuration
 │   └── README.md           # Frontend documentation
-├── backend                 # Backend application built with Spring Boot
+├── task-backend                 # Backend application built with Spring Boot
 │   ├── src
 │   │   ├── main
 │   │   │   ├── java
@@ -38,7 +38,7 @@ devops-crud-app
 │       └── ci-cd.yml      # CI/CD pipeline configuration
 ├── Dockerfile              # Docker image instructions
 ├── docker-compose.yml      # Multi-container Docker setup
-├── terraform               # Infrastructure as Code
+├── terraform               # Infrastructure as Code (future feature)
 │   ├── main.tf            # Main Terraform configuration
 │   ├── variables.tf       # Input variables for Terraform
 │   └── outputs.tf         # Output values for Terraform
@@ -59,7 +59,7 @@ devops-crud-app
 
 1. Clone the repository:
    ```
-   git clone <repository-url>
+   git clone https://github.com/Rene-Mayhrem/task-devops-app.git
    cd devops-crud-app
    ```
 
