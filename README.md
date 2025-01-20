@@ -66,13 +66,24 @@ devops-crud-app
 2. Set up the database:
    - Navigate to the `database` directory and run the `init.sql` script to initialize the database.
 
-3. Build and run the application:
+3. Create `.env` file for database credentials:
+   - Create a `.env` file in the root directory and add the following content:
+   ```
+   POSTGRES_USER=<YOUR_USERNAME>
+   POSTGRES_PASSWORD=<YOUR PASSWORD>
+   POSTGRES_DB=<YOUR POSTGRES DB NAME>
+   SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/${POSTGRES_DB}
+   SPRING_DATASOURCE_USERNAME=${POSTGRES_USER}
+   SPRING_DATASOURCE_PASSWORD=${POSTGRES_PASSWORD}
+   ```
+
+4. Build and run the application:
    - Use Docker Compose to build and run the application:
    ```
    docker-compose up --build
    ```
 
-4. Access the application:
+5. Access the application:
    - Frontend: `http://localhost:3000`
    - Backend: `http://localhost:8080`
 
